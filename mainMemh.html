@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0055)file:///C:/Users/user/appdata/local/temp/tmps3kna0.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>D:\OneDrive\Documents\Spring2017\ECE486\LAB7_memSim\Lab7-Copy\mainMem.h</title>
+<style>
+.highlight .hll { background-color: #ffffcc }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+.highlight * { font-family: monospace; }
+.highlight { font-size: 90%; }
+.highlight { line-height: normal; }
+.highlight .err { border: none !important }
+</style>
+</head>
+<body onload="window.print();">
+<div class="highlight"><pre><span></span><span class="lineno"> 1 </span><span class="cm">/*</span>
+<span class="lineno"> 2 </span><span class="cm"> * Name: Dakota Turner</span>
+<span class="lineno"> 3 </span><span class="cm"> * CWID: 1131453</span>
+<span class="lineno"> 4 </span><span class="cm"> * Class: ECE486 Lab7 Memory simulation(mainMem header)</span>
+<span class="lineno"> 5 </span><span class="cm"> * Date: April 27, 2017</span>
+<span class="lineno"> 6 </span><span class="cm"> */</span>
+<span class="lineno"> 7 </span>
+<span class="lineno"> 8 </span><span class="c1">//this file is the interface to the mainMem file</span>
+<span class="lineno"> 9 </span>
+<span class="lineno">10 </span><span class="cp">#ifndef MAINMEM_INCLUDED_</span>
+<span class="lineno">11 </span><span class="cp">#define MAINMEM_INCLUDED_</span>
+<span class="lineno">12 </span><span class="c1">//////////////Main Mem////////////////</span>
+<span class="lineno">13 </span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">mainMem</span>
+<span class="lineno">14 </span><span class="p">{</span>
+<span class="lineno">15 </span>    <span class="kt">int</span> <span class="n">size</span><span class="p">;</span>
+<span class="lineno">16 </span>    <span class="kt">int</span> <span class="n">lines</span><span class="p">;</span>
+<span class="lineno">17 </span>    
+<span class="lineno">18 </span><span class="p">}</span><span class="n">mainMem</span><span class="p">;</span>
+<span class="lineno">19 </span>
+<span class="lineno">20 </span><span class="k">extern</span> <span class="n">mainMem</span> <span class="o">*</span><span class="nf">newMem</span><span class="p">(</span><span class="kt">int</span> <span class="n">size</span><span class="p">);</span>
+<span class="lineno">21 </span><span class="k">extern</span> <span class="kt">int</span> <span class="nf">addressLines</span><span class="p">(</span><span class="n">mainMem</span> <span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="lineno">22 </span>
+<span class="lineno">23 </span><span class="c1">/////////////////////////////////////</span>
+<span class="lineno">24 </span>
+<span class="lineno">25 </span><span class="c1">///////////Memory locations////////</span>
+<span class="lineno">26 </span>
+<span class="lineno">27 </span><span class="k">typedef</span> <span class="k">struct</span> <span class="n">memLoc</span>
+<span class="lineno">28 </span><span class="p">{</span>
+<span class="lineno">29 </span>    <span class="kt">int</span> <span class="n">opNum</span><span class="p">;</span>
+<span class="lineno">30 </span>    <span class="kt">char</span> <span class="n">operation</span><span class="p">;</span>
+<span class="lineno">31 </span>    <span class="kt">int</span> <span class="n">address</span><span class="p">;</span>
+<span class="lineno">32 </span>    <span class="kt">int</span> <span class="n">mmblk</span><span class="p">;</span>
+<span class="lineno">33 </span>    <span class="kt">int</span> <span class="n">cmset</span><span class="p">;</span>
+<span class="lineno">34 </span>    <span class="kt">int</span> <span class="n">cmblk_top</span><span class="p">;</span>
+<span class="lineno">35 </span>    <span class="kt">int</span> <span class="n">cmblk_bottom</span><span class="p">;</span>
+<span class="lineno">36 </span>    <span class="kt">char</span> <span class="o">*</span><span class="n">hit_miss</span><span class="p">;</span>
+<span class="lineno">37 </span><span class="p">}</span><span class="n">memLoc</span><span class="p">;</span>
+<span class="lineno">38 </span>
+<span class="lineno">39 </span><span class="k">extern</span> <span class="n">memLoc</span> <span class="o">*</span><span class="nf">newMemLoc</span><span class="p">(</span><span class="kt">int</span> <span class="n">opNum</span><span class="p">,</span> <span class="kt">char</span> <span class="n">opType</span><span class="p">,</span> <span class="kt">int</span> <span class="n">addr</span><span class="p">,</span> <span class="kt">int</span> <span class="n">blksize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cachesets</span><span class="p">,</span> <span class="kt">int</span> <span class="n">N</span><span class="p">);</span>
+<span class="lineno">40 </span><span class="k">extern</span> <span class="n">memLoc</span> <span class="o">*</span><span class="nf">getMemLoc</span><span class="p">(</span><span class="n">memLoc</span> <span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="lineno">41 </span><span class="k">extern</span> <span class="kt">void</span> <span class="nf">displayMem</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">);</span>
+<span class="lineno">42 </span><span class="k">extern</span> <span class="kt">int</span> <span class="nf">getMMBlk</span><span class="p">(</span><span class="n">memLoc</span> <span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="lineno">43 </span><span class="k">extern</span> <span class="kt">int</span> <span class="nf">getCSet</span><span class="p">(</span><span class="n">memLoc</span> <span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="lineno">44 </span><span class="k">extern</span> <span class="kt">int</span> <span class="nf">getAddress</span><span class="p">(</span><span class="n">memLoc</span> <span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="lineno">45 </span><span class="k">extern</span> <span class="kt">int</span> <span class="nf">getOpNum</span><span class="p">(</span><span class="n">memLoc</span> <span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="lineno">46 </span><span class="k">extern</span> <span class="kt">char</span> <span class="nf">getMMOp</span><span class="p">(</span><span class="n">memLoc</span> <span class="o">*</span><span class="n">m</span><span class="p">);</span>
+<span class="lineno">47 </span>
+<span class="lineno">48 </span><span class="c1">///////////////////////////////////</span>
+<span class="lineno">49 </span>
+<span class="lineno">50 </span><span class="c1">////////////Helper functions///////</span>
+<span class="lineno">51 </span><span class="k">extern</span> <span class="kt">int</span> <span class="nf">numberofbits</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">);</span>
+<span class="lineno">52 </span><span class="k">extern</span> <span class="kt">long</span> <span class="nf">DectoBin</span><span class="p">(</span><span class="kt">int</span> <span class="n">address</span><span class="p">);</span>
+<span class="lineno">53 </span><span class="k">extern</span> <span class="kt">char</span><span class="o">*</span> <span class="nf">itoa</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">,</span> <span class="kt">char</span><span class="o">*</span> <span class="n">str</span><span class="p">,</span> <span class="kt">int</span> <span class="n">base</span><span class="p">);</span>
+<span class="lineno">54 </span><span class="c1">////////////////////////////////////</span>
+<span class="lineno">55 </span><span class="cp">#endif</span>
+</pre></div>
+
+
+</body></html>

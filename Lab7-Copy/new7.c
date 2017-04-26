@@ -105,28 +105,32 @@ int main()
 
 	for (i = 0; i < CacheSets(c); ++i)
 	{
-		DcacheSets[i] = newDArray(displayC);
-		QcacheSets[i] = newQueue(displayC);
+		DcacheSets[i] = newDArray(displayC);//creates an array for each cache set
+		QcacheSets[i] = newQueue(displayC);//creates a queue for each cache set
 		for (j = 0; j < Associativity(c); ++j)
 		{
-			insertDArray(DcacheSets[i], NULL);
+			insertDArray(DcacheSets[i], NULL);//initializes the array with NULL
 		}
 	}
 
 	int hits = 0;
-	for (i = 0; i < num_of_addresses; ++i)
+	for (i = 0; i < num_of_addresses; ++i)//loops through each address
 	{
 		int found = 0;
-		memLoc *Op = getDArray(memOps, i);
+		memLoc *Op = getDArray(memOps, i);//get the current operation from the darray
 		
+		//initializes a new cache block
 		cacheBlock *cblock = newCBlock(getMMOp(Op),getMMBlk(Op),getOpNum(Op),1, tagBits(c));
+		//sets the tag for the cache block
 		setTag(cblock, getAddress(Op), tagBits(c), addressLines(m));
-		if (isNotEmpty(DcacheSets[getCSet(Op)]))  //If there is an item in the array check the array for a hit
+		//If there is an item in the array check the array for a hit
+		if (isNotEmpty(DcacheSets[getCSet(Op)]))  
 		{
 			for (j = 0; j < filledSlots(DcacheSets[getCSet(Op)]); ++j)
-			{
+			{	
 				if (getMMBlk(Op) == getData(getDArray(DcacheSets[getCSet(Op)],j)))
 				{ 
+					//if the address is found in the correct set then sets it as hit
 					updateAge(getDArray(DcacheSets[getCSet(Op)],j),Op->opNum);
 					Op->hit_miss="hit";
 					found = 1;
@@ -136,43 +140,54 @@ int main()
 			}
 		}
 		if (found != 1)   //If there were not hits 
-		{
-			if (!(isFull(DcacheSets[getCSet(Op)])))  //Set the next empty slot if the memory block isn't full
+		{	//Set the next empty slot if the memory block isn't full
+			if (!(isFull(DcacheSets[getCSet(Op)])))  
 			{
 				if (replacement == 'F')
 				{
+					//enqueue the operation for use with FIFO
 					enqueue(QcacheSets[getCSet(Op)], cblock);
 				}
 				//Set next empty slot in CacheSet for DArray
 				setDArray(DcacheSets[getCSet(Op)], filledSlots(DcacheSets[getCSet(Op)]), cblock);
 			}
-			else      //If cache set is full replace something  //This conditional is the only place where the replacement policy matters
+			//If cache set is full replace something  
+			//This conditional is the only place where the replacement policy matters
+			else     
 			{
 				if (replacement == 'F')
-				{
+				{	//dequeues the first operation preformed
 					cacheBlock *removed = dequeue(QcacheSets[getCSet(Op)]);
 					for (j = 0; j < Associativity(c); ++j)
-					{
+					{	//break out if there is a hit
 						if (getData(removed) == getData(getDArray(DcacheSets[getCSet(Op)],j)))
 						{
 							break;
 						}
 					}
+					//if not hit, replace that position in the darray 
 					setDArray(DcacheSets[getCSet(Op)], j, cblock);
+					//and enqueue the new operation to track it
 					enqueue(QcacheSets[getCSet(Op)], cblock);
 				}
+				//LIU replacement policy
 				else if(replacement == 'L')
-				{
+				{	//gets the age of the current cache block(it's OpNum)
 					int smallest = getAge(cblock), index = 0;
+					//loops through set
 					for (j = 0; j < Associativity(c); ++j)
-					{
+					{	//gets the age of the current operation
 						int age = getAge(getDArray(DcacheSets[getCSet(Op)],j));
+						//if the cache blocks age is greater than the new operation
+						//then reset the cache blocks age and update index for the setDArray
 						if (smallest > age)
 						{
 							smallest = age;
 							index = j;
 						}
 					}
+					//alwas inserts something if any conditionals above were met
+					//then a new memory  block was inserted
 					setDArray(DcacheSets[getCSet(Op)], index, cblock);
 				}
 			}
@@ -186,6 +201,7 @@ int main()
 		{
 			if (getDArray(DcacheSets[i],j)==NULL)
 			{
+				//initializes empty slots in the set
 				cacheBlock *emptySlot = newCBlock('R',-1, -1,0, tagBits(c));
 				setDArray(DcacheSets[i], j, emptySlot);
 			}
@@ -197,6 +213,7 @@ int main()
 	{
 		for (j = 0; j < Associativity(c); ++j)
 		{
+			//sets the cache blocks with correct data
 			cacheBlock *block = getDArray(DcacheSets[i],j);
 			setCBNum(block, blockNumber);
 			blockNumber++;
@@ -206,10 +223,17 @@ int main()
 /*********************************Print tables*********************************/
 
 	displayDArray(stdout,memOps);//displays the memory table
-	printf("\nHighest possible hit rate %d/%d = %.02f%%\n", count, num_of_addresses, ((float)count/(float)num_of_addresses)*100);
-	printf("Actual hit rate = %d/%d = %.02f%%\n\n", hits, num_of_addresses, ((float)hits/(float)num_of_addresses)*100);
+
+	//caclculate the highest possible and actual hit rates
+	float hphr = ((float)count/(float)num_of_addresses)*100;
+	float ahr = ((float)hits/(float)num_of_addresses)*100;
+
+	printf("\nHighest possible hit rate %d/%d = %.02f%%\n", count, num_of_addresses, hphr);
+	printf("Actual hit rate = %d/%d = %.02f%%\n\n", hits, num_of_addresses, ahr);
+
 	printCacheHeading();
 	printf("_________________________________________________________________\n");
+
 	for (i = 0; i < CacheSets(c); ++i)
 	{
 		displayDArray(stdout,DcacheSets[i]);
@@ -252,7 +276,7 @@ int isFull(DArray *array)
 	}
 	return 1;
 }
-
+//returns which slots are filled in the darray
 int filledSlots(DArray *array)
 {
 	int i;

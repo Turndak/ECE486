@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0055)file:///C:/Users/user/appdata/local/temp/tmpki1ran.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>D:\OneDrive\Documents\Spring2017\ECE486\LAB7_memSim\Lab7-Copy\cache.c</title>
+<style>
+.highlight .hll { background-color: #ffffcc }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+.highlight * { font-family: monospace; }
+.highlight { font-size: 90%; }
+.highlight { line-height: normal; }
+.highlight .err { border: none !important }
+</style>
+</head>
+<body onload="window.print();">
+<div class="highlight"><pre><span></span><span class="lineno">  1 </span><span class="cm">/*</span>
+<span class="lineno">  2 </span><span class="cm"> * Name: Dakota Turner</span>
+<span class="lineno">  3 </span><span class="cm"> * CWID: 1131453</span>
+<span class="lineno">  4 </span><span class="cm"> * Class: ECE486 Lab7 Memory simulation(cache)</span>
+<span class="lineno">  5 </span><span class="cm"> * Date: April 27, 2017</span>
+<span class="lineno">  6 </span><span class="cm"> */</span>
+<span class="lineno">  7 </span>
+<span class="lineno">  8 </span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="lineno">  9 </span><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+<span class="lineno"> 10 </span><span class="cp">#include</span> <span class="cpf">&lt;time.h&gt;</span><span class="cp"></span>
+<span class="lineno"> 11 </span><span class="cp">#include</span> <span class="cpf">"cache.h"</span><span class="cp"></span>
+<span class="lineno"> 12 </span><span class="cp">#include</span> <span class="cpf">"mainMem.h"</span><span class="cp"></span>
+<span class="lineno"> 13 </span>
+<span class="lineno"> 14 </span>
+<span class="lineno"> 15 </span><span class="c1">/////////////////Cache Stuff/////////////////////////////</span>
+<span class="lineno"> 16 </span><span class="c1">//initializing the new cache</span>
+<span class="lineno"> 17 </span><span class="n">cache</span> <span class="o">*</span><span class="nf">newCache</span><span class="p">(</span><span class="kt">int</span> <span class="n">aLines</span><span class="p">,</span><span class="kt">int</span> <span class="n">size</span><span class="p">,</span> <span class="kt">int</span> <span class="n">linesize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">char</span> <span class="n">r</span><span class="p">)</span>
+<span class="lineno"> 18 </span><span class="p">{</span> 
+<span class="lineno"> 19 </span>    <span class="n">cache</span> <span class="o">*</span><span class="n">c</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">cache</span><span class="p">));</span>
+<span class="lineno"> 20 </span>    <span class="n">c</span><span class="o">-&gt;</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span><span class="p">;</span>
+<span class="lineno"> 21 </span>    <span class="n">c</span><span class="o">-&gt;</span><span class="n">blockSize</span> <span class="o">=</span> <span class="n">linesize</span><span class="p">;</span>
+<span class="lineno"> 22 </span>    <span class="n">c</span><span class="o">-&gt;</span><span class="n">cacheBlocks</span> <span class="o">=</span> <span class="n">size</span> <span class="o">/</span> <span class="n">linesize</span><span class="p">;</span>
+<span class="lineno"> 23 </span>    <span class="n">c</span><span class="o">-&gt;</span><span class="n">assoc</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+<span class="lineno"> 24 </span>    <span class="n">c</span><span class="o">-&gt;</span><span class="n">cacheSets</span> <span class="o">=</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">cacheBlocks</span> <span class="o">/</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">assoc</span><span class="p">;</span>
+<span class="lineno"> 25 </span>    <span class="n">c</span><span class="o">-&gt;</span><span class="n">replacement</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+<span class="lineno"> 26 </span>    <span class="n">c</span><span class="o">-&gt;</span><span class="n">offbits</span> <span class="o">=</span> <span class="n">numberofbits</span><span class="p">(</span><span class="n">linesize</span><span class="p">);</span>
+<span class="lineno"> 27 </span>    <span class="n">c</span><span class="o">-&gt;</span><span class="n">indexbits</span> <span class="o">=</span> <span class="n">numberofbits</span><span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">cacheSets</span><span class="p">);</span>
+<span class="lineno"> 28 </span>    <span class="n">c</span><span class="o">-&gt;</span><span class="n">tagbits</span> <span class="o">=</span> <span class="n">aLines</span> <span class="o">-</span> <span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">offbits</span> <span class="o">+</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">indexbits</span><span class="p">);</span>
+<span class="lineno"> 29 </span>    <span class="n">c</span><span class="o">-&gt;</span><span class="n">totalCache</span> <span class="o">=</span> <span class="n">size</span> <span class="o">+</span> <span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">tagbits</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">cacheBlocks</span><span class="o">/</span><span class="mi">8</span><span class="p">);</span>
+<span class="lineno"> 30 </span>    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="lineno"> 31 </span><span class="p">}</span>
+<span class="lineno"> 32 </span>
+<span class="lineno"> 33 </span><span class="kt">int</span> <span class="nf">offBits</span><span class="p">(</span><span class="n">cache</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="lineno"> 34 </span><span class="p">{</span>
+<span class="lineno"> 35 </span>    <span class="k">return</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">offbits</span><span class="p">;</span>
+<span class="lineno"> 36 </span><span class="p">}</span>
+<span class="lineno"> 37 </span>
+<span class="lineno"> 38 </span><span class="kt">int</span> <span class="nf">indexBits</span><span class="p">(</span><span class="n">cache</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="lineno"> 39 </span><span class="p">{</span>
+<span class="lineno"> 40 </span>    <span class="k">return</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">indexbits</span><span class="p">;</span>
+<span class="lineno"> 41 </span><span class="p">}</span>
+<span class="lineno"> 42 </span>
+<span class="lineno"> 43 </span><span class="kt">int</span> <span class="nf">tagBits</span><span class="p">(</span><span class="n">cache</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="lineno"> 44 </span><span class="p">{</span>
+<span class="lineno"> 45 </span>    <span class="k">return</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">tagbits</span><span class="p">;</span>
+<span class="lineno"> 46 </span><span class="p">}</span>
+<span class="lineno"> 47 </span>
+<span class="lineno"> 48 </span><span class="kt">int</span> <span class="nf">totCacheSize</span><span class="p">(</span><span class="n">cache</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="lineno"> 49 </span><span class="p">{</span>
+<span class="lineno"> 50 </span>    <span class="k">return</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">totalCache</span><span class="p">;</span>
+<span class="lineno"> 51 </span><span class="p">}</span>
+<span class="lineno"> 52 </span>
+<span class="lineno"> 53 </span><span class="kt">int</span> <span class="nf">CacheBlockSize</span><span class="p">(</span><span class="n">cache</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="lineno"> 54 </span><span class="p">{</span>
+<span class="lineno"> 55 </span>    <span class="k">return</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">blockSize</span><span class="p">;</span>
+<span class="lineno"> 56 </span><span class="p">}</span>
+<span class="lineno"> 57 </span>
+<span class="lineno"> 58 </span><span class="kt">int</span> <span class="nf">CacheSets</span><span class="p">(</span><span class="n">cache</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="lineno"> 59 </span><span class="p">{</span>
+<span class="lineno"> 60 </span>    <span class="k">return</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">cacheSets</span><span class="p">;</span>
+<span class="lineno"> 61 </span><span class="p">}</span>
+<span class="lineno"> 62 </span><span class="kt">int</span> <span class="nf">Associativity</span><span class="p">(</span><span class="n">cache</span> <span class="o">*</span><span class="n">c</span><span class="p">)</span>
+<span class="lineno"> 63 </span><span class="p">{</span>
+<span class="lineno"> 64 </span>    <span class="k">return</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">assoc</span><span class="p">;</span>
+<span class="lineno"> 65 </span><span class="p">}</span>
+<span class="lineno"> 66 </span>
+<span class="lineno"> 67 </span><span class="c1">//////////////////////////End Cache Stuff////////////////////////////////////</span>
+<span class="lineno"> 68 </span>
+<span class="lineno"> 69 </span><span class="c1">/////////////////cacheBlock stuff//////////////////////////</span>
+<span class="lineno"> 70 </span><span class="c1">//initializing the new cache block</span>
+<span class="lineno"> 71 </span><span class="n">cacheBlock</span> <span class="o">*</span><span class="nf">newCBlock</span><span class="p">(</span><span class="kt">char</span> <span class="n">oper</span><span class="p">,</span> <span class="kt">int</span> <span class="n">mmblk</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">,</span> <span class="kt">int</span> <span class="n">valid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">tagSize</span><span class="p">)</span>
+<span class="lineno"> 72 </span><span class="p">{</span>
+<span class="lineno"> 73 </span>    <span class="n">cacheBlock</span> <span class="o">*</span><span class="n">cb</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">cacheBlock</span><span class="p">));</span>
+<span class="lineno"> 74 </span>    <span class="k">if</span> <span class="p">(</span><span class="n">oper</span> <span class="o">==</span> <span class="sc">'R'</span><span class="p">)</span>
+<span class="lineno"> 75 </span>    <span class="p">{</span>
+<span class="lineno"> 76 </span>        <span class="n">cb</span><span class="o">-&gt;</span><span class="n">dirty</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno"> 77 </span>    <span class="p">}</span>
+<span class="lineno"> 78 </span>    <span class="k">else</span>
+<span class="lineno"> 79 </span>    <span class="p">{</span>
+<span class="lineno"> 80 </span>        <span class="n">cb</span><span class="o">-&gt;</span><span class="n">dirty</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno"> 81 </span>    <span class="p">}</span>
+<span class="lineno"> 82 </span>    <span class="n">cb</span><span class="o">-&gt;</span><span class="n">blk_num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno"> 83 </span>    <span class="n">cb</span><span class="o">-&gt;</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+<span class="lineno"> 84 </span>    <span class="n">cb</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">=</span> <span class="n">mmblk</span><span class="p">;</span>
+<span class="lineno"> 85 </span>    <span class="n">cb</span><span class="o">-&gt;</span><span class="n">valid</span> <span class="o">=</span> <span class="n">valid</span><span class="p">;</span>
+<span class="lineno"> 86 </span>    <span class="n">cb</span><span class="o">-&gt;</span><span class="n">itag</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno"> 87 </span>    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+<span class="lineno"> 88 </span>    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">tagSize</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="lineno"> 89 </span>    <span class="p">{</span>
+<span class="lineno"> 90 </span>        <span class="n">cb</span><span class="o">-&gt;</span><span class="n">ctag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'x'</span><span class="p">;</span>
+<span class="lineno"> 91 </span>    <span class="p">}</span>
+<span class="lineno"> 92 </span>    <span class="k">return</span> <span class="n">cb</span><span class="p">;</span>
+<span class="lineno"> 93 </span><span class="p">}</span>
+<span class="lineno"> 94 </span>
+<span class="lineno"> 95 </span><span class="n">cacheBlock</span> <span class="o">*</span><span class="nf">getCBlock</span><span class="p">(</span><span class="n">cacheBlock</span> <span class="o">*</span><span class="n">cb</span><span class="p">)</span>
+<span class="lineno"> 96 </span><span class="p">{</span>
+<span class="lineno"> 97 </span>    <span class="k">return</span> <span class="n">cb</span><span class="p">;</span>
+<span class="lineno"> 98 </span><span class="p">}</span>
+<span class="lineno"> 99 </span>
+<span class="lineno">100 </span><span class="c1">//display the cache block</span>
+<span class="lineno">101 </span><span class="kt">void</span> <span class="nf">displayC</span><span class="p">(</span><span class="kt">FILE</span> <span class="o">*</span><span class="n">fp</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">v</span><span class="p">)</span>
+<span class="lineno">102 </span><span class="p">{</span>
+<span class="lineno">103 </span>    <span class="n">cacheBlock</span> <span class="o">*</span><span class="n">cb</span> <span class="o">=</span> <span class="n">getCBlock</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="lineno">104 </span>    <span class="k">if</span> <span class="p">(</span><span class="n">cb</span><span class="o">-&gt;</span><span class="n">data</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="lineno">105 </span>    <span class="p">{</span>
+<span class="lineno">106 </span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">"</span><span class="se">\t</span><span class="s">%d </span><span class="se">\t</span><span class="s">%d </span><span class="se">\t</span><span class="s">%d </span><span class="se">\t</span><span class="s">%s </span><span class="se">\t</span><span class="s">x </span><span class="se">\t</span><span class="s">"</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">blk_num</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">dirty</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">valid</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">ctag</span><span class="p">);</span>
+<span class="lineno">107 </span>    <span class="p">}</span>
+<span class="lineno">108 </span>    <span class="k">else</span>
+<span class="lineno">109 </span>    <span class="p">{</span>
+<span class="lineno">110 </span>        <span class="n">fprintf</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s">"</span><span class="se">\t</span><span class="s">%d </span><span class="se">\t</span><span class="s">%d </span><span class="se">\t</span><span class="s">%d </span><span class="se">\t</span><span class="s">%s </span><span class="se">\t</span><span class="s">mmblk # %d </span><span class="se">\t</span><span class="s">"</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">blk_num</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">dirty</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">valid</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">ctag</span><span class="p">,</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">);</span>
+<span class="lineno">111 </span>    <span class="p">}</span>
+<span class="lineno">112 </span><span class="p">}</span>
+<span class="lineno">113 </span>
+<span class="lineno">114 </span><span class="kt">int</span> <span class="nf">getData</span><span class="p">(</span><span class="n">cacheBlock</span> <span class="o">*</span><span class="n">cb</span><span class="p">)</span>
+<span class="lineno">115 </span><span class="p">{</span>
+<span class="lineno">116 </span>    <span class="k">return</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span>
+<span class="lineno">117 </span><span class="p">}</span>
+<span class="lineno">118 </span>
+<span class="lineno">119 </span><span class="kt">int</span> <span class="nf">getAge</span><span class="p">(</span><span class="n">cacheBlock</span> <span class="o">*</span><span class="n">cb</span><span class="p">)</span>
+<span class="lineno">120 </span><span class="p">{</span>
+<span class="lineno">121 </span>    <span class="k">return</span> <span class="n">cb</span><span class="o">-&gt;</span><span class="n">age</span><span class="p">;</span>
+<span class="lineno">122 </span><span class="p">}</span>
+<span class="lineno">123 </span>
+<span class="lineno">124 </span><span class="kt">void</span> <span class="nf">updateAge</span><span class="p">(</span><span class="n">cacheBlock</span> <span class="o">*</span><span class="n">cb</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span>
+<span class="lineno">125 </span><span class="p">{</span>
+<span class="lineno">126 </span>    <span class="n">cb</span><span class="o">-&gt;</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+<span class="lineno">127 </span><span class="p">}</span>
+<span class="lineno">128 </span>
+<span class="lineno">129 </span><span class="kt">void</span> <span class="nf">setCBNum</span><span class="p">(</span><span class="n">cacheBlock</span> <span class="o">*</span><span class="n">cb</span><span class="p">,</span> <span class="kt">int</span> <span class="n">number</span><span class="p">)</span>
+<span class="lineno">130 </span><span class="p">{</span>
+<span class="lineno">131 </span>    <span class="n">cb</span><span class="o">-&gt;</span><span class="n">blk_num</span> <span class="o">=</span> <span class="n">number</span><span class="p">;</span>
+<span class="lineno">132 </span><span class="p">}</span>
+<span class="lineno">133 </span>
+<span class="lineno">134 </span><span class="c1">//converts the address to binary, singles out the tag bits</span>
+<span class="lineno">135 </span><span class="kt">void</span> <span class="nf">setTag</span><span class="p">(</span><span class="n">cacheBlock</span> <span class="o">*</span><span class="n">cb</span><span class="p">,</span> <span class="kt">int</span> <span class="n">address</span><span class="p">,</span> <span class="kt">int</span> <span class="n">tagSize</span><span class="p">,</span> <span class="kt">int</span> <span class="n">totalSize</span><span class="p">)</span>
+<span class="lineno">136 </span><span class="p">{</span>
+<span class="lineno">137 </span>    <span class="c1">//converting to binary</span>
+<span class="lineno">138 </span>    <span class="kt">long</span> <span class="n">tempTag</span> <span class="o">=</span> <span class="n">DectoBin</span><span class="p">(</span><span class="n">address</span><span class="p">);</span>
+<span class="lineno">139 </span>    <span class="c1">//singling out the tag bits</span>
+<span class="lineno">140 </span>    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+<span class="lineno">141 </span>    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">totalSize</span><span class="o">-</span><span class="n">tagSize</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="lineno">142 </span>    <span class="p">{</span>
+<span class="lineno">143 </span>        <span class="n">tempTag</span> <span class="o">/=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="lineno">144 </span>    <span class="p">}</span>
+<span class="lineno">145 </span>    <span class="n">cb</span><span class="o">-&gt;</span><span class="n">itag</span> <span class="o">=</span> <span class="n">tempTag</span><span class="p">;</span>
+<span class="lineno">146 </span>    
+<span class="lineno">147 </span>    <span class="c1">//converting to binary string(backwards)</span>
+<span class="lineno">148 </span>    <span class="kt">char</span> <span class="n">temp</span><span class="p">[</span><span class="n">tagSize</span><span class="p">];</span>
+<span class="lineno">149 </span>    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">tagSize</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="lineno">150 </span>    <span class="p">{</span>
+<span class="lineno">151 </span>        <span class="kt">int</span> <span class="n">remainder</span> <span class="o">=</span> <span class="n">tempTag</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+<span class="lineno">152 </span>        <span class="n">tempTag</span><span class="o">/=</span><span class="mi">10</span><span class="p">;</span>
+<span class="lineno">153 </span>        <span class="k">if</span> <span class="p">(</span><span class="n">remainder</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="lineno">154 </span>        <span class="p">{</span>
+<span class="lineno">155 </span>            <span class="n">cb</span><span class="o">-&gt;</span><span class="n">ctag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'0'</span><span class="p">;</span>
+<span class="lineno">156 </span>            <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'0'</span><span class="p">;</span>
+<span class="lineno">157 </span>        <span class="p">}</span>
+<span class="lineno">158 </span>        <span class="k">else</span>
+<span class="lineno">159 </span>        <span class="p">{</span>
+<span class="lineno">160 </span>            <span class="n">cb</span><span class="o">-&gt;</span><span class="n">ctag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'1'</span><span class="p">;</span>
+<span class="lineno">161 </span>            <span class="n">temp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'1'</span><span class="p">;</span>
+<span class="lineno">162 </span>        <span class="p">}</span>
+<span class="lineno">163 </span>    <span class="p">}</span>
+<span class="lineno">164 </span>    <span class="c1">//flips the binary string the right way around</span>
+<span class="lineno">165 </span>    <span class="kt">long</span> <span class="n">j</span> <span class="o">=</span> <span class="n">tagSize</span><span class="p">;</span>
+<span class="lineno">166 </span>    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">tagSize</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="lineno">167 </span>    <span class="p">{</span>
+<span class="lineno">168 </span>        <span class="n">cb</span><span class="o">-&gt;</span><span class="n">ctag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+<span class="lineno">169 </span>        <span class="n">j</span><span class="o">--</span><span class="p">;</span>
+<span class="lineno">170 </span>    <span class="p">}</span>
+<span class="lineno">171 </span><span class="p">}</span>
+</pre></div>
+
+
+</body></html>
